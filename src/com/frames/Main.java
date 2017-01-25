@@ -83,7 +83,7 @@ public final class Main extends JFrame {
     public void webPages(String URL) {
 
         try {
-            Desktop.getDesktop().browse(URI.create(URL));
+            getDesktop().browse(URI.create(URL));
         } catch (IOException ex) {
             // Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -412,6 +412,7 @@ public final class Main extends JFrame {
     }                                   
 
     private void jMenu3MouseClicked(MouseEvent evt) {                                    
+       evt.getID();
         Desktop desktop = getDesktop();
         try {
             try {
@@ -448,9 +449,9 @@ public final class Main extends JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -460,7 +461,7 @@ public final class Main extends JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
