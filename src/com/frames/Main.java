@@ -104,16 +104,16 @@ public final class Main extends JFrame {
         txtPaneShow = new javax.swing.JTextPane();
         cmbLanguage = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu1 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu2 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu3 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu4 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(13, 109, 179));
@@ -345,7 +345,7 @@ public final class Main extends JFrame {
     }                                           
 
     private void formWindowStateChanged(WindowEvent evt) {                                        
-
+        evt.getID();
         int x = this.getWidth() / 2;
         int y = this.getHeight();
         cmbLanguage.setLocation(x - cmbLanguage.getPreferredSize().width / 2, y - 110);
@@ -367,6 +367,7 @@ public final class Main extends JFrame {
 
     private void jMenu1MouseClicked(MouseEvent evt) {                                    
         try {
+            evt.getID();
             Languages l;
             l = (Languages) cmbLanguage.getSelectedItem();
             language = l.getLang();
@@ -386,27 +387,31 @@ public final class Main extends JFrame {
     }                                   
 
     private void jMenuItem2ActionPerformed(ActionEvent evt) {                                           
+        evt.getID();
         String URL = "https://www.facebook.com/EvilInsultGenerator/";
         webPages(URL);
     }                                          
 
     private void jMenuItem3ActionPerformed(ActionEvent evt) {                                           
+        evt.getID();
         String URL = "https://twitter.com/__E__I__G__";
         webPages(URL);
     }                                          
 
     private void jMenuItem4ActionPerformed(ActionEvent evt) {                                           
+        evt.getID();
         String URL = "https://evilinsult.com/newsletter/";
         webPages(URL);
     }                                          
 
     private void jMenu4MouseClicked(MouseEvent evt) {                                    
+        evt.getID();
         String URL = "https://evilinsult.com/";
         webPages(URL);
     }                                   
 
     private void jMenu5MouseClicked(MouseEvent evt) {                                    
-
+        evt.getID();
         String URL = "https://evilinsult.com/legal.html";
         webPages(URL);
     }                                   
@@ -473,13 +478,8 @@ public final class Main extends JFrame {
     }
 
     // Variables declaration - do not modify                     
-    javax.swing.JButton btnGenerate;
-    javax.swing.JComboBox cmbLanguage;
-    javax.swing.JMenu jMenu1;
-    javax.swing.JMenu jMenu2;
-    javax.swing.JMenu jMenu3;
-    javax.swing.JMenu jMenu4;
-    javax.swing.JMenu jMenu5;
+    private javax.swing.JButton btnGenerate;
+    private javax.swing.JComboBox cmbLanguage;
     javax.swing.JMenuBar jMenuBar1;
     javax.swing.JMenuItem jMenuItem1;
     javax.swing.JMenuItem jMenuItem2;
@@ -488,6 +488,6 @@ public final class Main extends JFrame {
     javax.swing.JPanel jPanel1;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JPopupMenu.Separator jSeparator1;
-    javax.swing.JTextPane txtPaneShow;
+    private javax.swing.JTextPane txtPaneShow;
     // End of variables declaration                   
 }
