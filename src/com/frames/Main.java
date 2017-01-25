@@ -329,7 +329,8 @@ public final class Main extends JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void btnGenerateActionPerformed(ActionEvent evt) {                                            
+    private void btnGenerateActionPerformed(ActionEvent evt) { 
+         evt.getID();
         try {
             Languages l;
             l = (Languages) cmbLanguage.getSelectedItem();
@@ -344,7 +345,8 @@ public final class Main extends JFrame {
         }
     }                                           
 
-    private void formWindowStateChanged(WindowEvent evt) {                                        
+    private void formWindowStateChanged(WindowEvent evt) {  
+         evt.getID();
 
         int x = this.getWidth() / 2;
         int y = this.getHeight();
@@ -365,7 +367,8 @@ public final class Main extends JFrame {
 
     }                                       
 
-    private void jMenu1MouseClicked(MouseEvent evt) {                                    
+    private void jMenu1MouseClicked(MouseEvent evt) {    
+         evt.getID();
         try {
             Languages l;
             l = (Languages) cmbLanguage.getSelectedItem();
@@ -385,17 +388,20 @@ public final class Main extends JFrame {
         }
     }                                   
 
-    private void jMenuItem2ActionPerformed(ActionEvent evt) {                                           
+    private void jMenuItem2ActionPerformed(ActionEvent evt) { 
+         evt.getID();
         String URL = "https://www.facebook.com/EvilInsultGenerator/";
         webPages(URL);
     }                                          
 
-    private void jMenuItem3ActionPerformed(ActionEvent evt) {                                           
+    private void jMenuItem3ActionPerformed(ActionEvent evt) {       
+         evt.getID();
         String URL = "https://twitter.com/__E__I__G__";
         webPages(URL);
     }                                          
 
-    private void jMenuItem4ActionPerformed(ActionEvent evt) {                                           
+    private void jMenuItem4ActionPerformed(ActionEvent evt) {     
+         evt.getID();
         String URL = "https://evilinsult.com/newsletter/";
         webPages(URL);
     }                                          
@@ -406,7 +412,7 @@ public final class Main extends JFrame {
     }                                   
 
     private void jMenu5MouseClicked(MouseEvent evt) {                                    
-
+         evt.getID();
         String URL = "https://evilinsult.com/legal.html";
         webPages(URL);
     }                                   
