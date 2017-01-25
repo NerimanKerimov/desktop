@@ -104,16 +104,16 @@ public final class Main extends JFrame {
         txtPaneShow = new javax.swing.JTextPane();
         cmbLanguage = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu1 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu2 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu3 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu4 = new javax.swing.JMenu();
+        javax.swing.JMenu jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(13, 109, 179));
@@ -473,13 +473,8 @@ public final class Main extends JFrame {
     }
 
     // Variables declaration - do not modify                     
-    javax.swing.JButton btnGenerate;
-    javax.swing.JComboBox cmbLanguage;
-    javax.swing.JMenu jMenu1;
-    javax.swing.JMenu jMenu2;
-    javax.swing.JMenu jMenu3;
-    javax.swing.JMenu jMenu4;
-    javax.swing.JMenu jMenu5;
+    private javax.swing.JButton btnGenerate;
+    private javax.swing.JComboBox cmbLanguage;
     javax.swing.JMenuBar jMenuBar1;
     javax.swing.JMenuItem jMenuItem1;
     javax.swing.JMenuItem jMenuItem2;
@@ -488,6 +483,6 @@ public final class Main extends JFrame {
     javax.swing.JPanel jPanel1;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JPopupMenu.Separator jSeparator1;
-    javax.swing.JTextPane txtPaneShow;
+    private javax.swing.JTextPane txtPaneShow;
     // End of variables declaration                   
 }
