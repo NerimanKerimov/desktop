@@ -17,10 +17,7 @@ public class Languages implements Serializable{
     private String lang;
     private String fullLanguage;
 
-    public Languages() {
-    }
-
-   
+    
     
     
 

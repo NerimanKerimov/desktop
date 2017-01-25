@@ -3,16 +3,43 @@ package com.frames;
 
 import com.dbc.DBConnection;
 import com.models.Languages;
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Desktop;
 import static java.awt.Desktop.getDesktop;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.HierarchyBoundsListener;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -26,12 +53,12 @@ import org.jsoup.select.Elements;
  *
  * @author Neriman-laptop
  */
-public class Main extends javax.swing.JFrame {
+public final class Main extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
-    String language;
+  private  String language;
     DBConnection listLanguage = new DBConnection();
 
     public Main() {
@@ -56,8 +83,7 @@ public class Main extends javax.swing.JFrame {
         try {
 
             Document doc1 = Jsoup.connect("http://evilinsult.com/generate_insult.php?lang=en").get();
-            String title = doc1.title();
-            // System.out.println("title: "+title);
+       
             Elements links = doc1.select("body");
             for (Element link : links) {
                 txtPaneShow.setText("\n" + link.text());
@@ -76,7 +102,6 @@ public class Main extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -119,18 +144,6 @@ public class Main extends javax.swing.JFrame {
         setBackground(new java.awt.Color(13, 109, 179));
         setMinimumSize(new java.awt.Dimension(742, 465));
         setState(4);
-        addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
-            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
-            }
-            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
-                formAncestorResized(evt);
-            }
-        });
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                formMousePressed(evt);
-            }
-        });
         addWindowStateListener(new java.awt.event.WindowStateListener() {
             public void windowStateChanged(java.awt.event.WindowEvent evt) {
                 formWindowStateChanged(evt);
@@ -219,11 +232,6 @@ public class Main extends javax.swing.JFrame {
                 jMenu1MouseClicked(evt);
             }
         });
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setBackground(new java.awt.Color(2, 2, 17));
@@ -255,11 +263,6 @@ public class Main extends javax.swing.JFrame {
         jMenuItem2.setForeground(new java.awt.Color(51, 204, 255));
         jMenuItem2.setText("Facebook");
         jMenuItem2.setOpaque(true);
-        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem2MouseClicked(evt);
-            }
-        });
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -351,13 +354,12 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
+    private void btnGenerateActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
         try {
-            Languages l = new Languages();
+            Languages l;
             l = (Languages) cmbLanguage.getSelectedItem();
             language = l.getLang();
             Document doc = Jsoup.connect("http://evilinsult.com/generate_insult.php?lang=" + language).get();
-            String title = doc.title();
             Elements links = doc.select("body");
             for (Element link : links) {
                 txtPaneShow.setText("\n" + link.text());
@@ -367,7 +369,7 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGenerateActionPerformed
 
-    private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
+    private void formWindowStateChanged(WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
 
         int x = this.getWidth() / 2;
         int y = this.getHeight();
@@ -388,18 +390,14 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowStateChanged
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-
-    }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jMenu1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         try {
-            Languages l = new Languages();
+            Languages l;
             l = (Languages) cmbLanguage.getSelectedItem();
             language = l.getLang();
 
             Document doc = Jsoup.connect("http://evilinsult.com/generate_insult.php?lang=" + language).get();
-            String title = doc.title();
+          
 
             Elements links = doc.select("body");
             for (Element link : links) {
@@ -412,37 +410,33 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenu1MouseClicked
 
-    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
-
-    }//GEN-LAST:event_jMenuItem2MouseClicked
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem2ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         String URL = "https://www.facebook.com/EvilInsultGenerator/";
         webPages(URL);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItem3ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String URL = "https://twitter.com/__E__I__G__";
         webPages(URL);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItem4ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         String URL = "https://evilinsult.com/newsletter/";
         webPages(URL);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+    private void jMenu4MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         String URL = "https://evilinsult.com/";
         webPages(URL);
     }//GEN-LAST:event_jMenu4MouseClicked
 
-    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+    private void jMenu5MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
 
         String URL = "https://evilinsult.com/legal.html";
         webPages(URL);
     }//GEN-LAST:event_jMenu5MouseClicked
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void jMenu3MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         Desktop desktop = getDesktop();
         try {
             try {
@@ -455,8 +449,9 @@ public class Main extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_jMenu3MouseClicked
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItem1ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Desktop desktop = getDesktop();
+        evt.getID();
         try {
             try {
                 desktop.mail(new URI("mailto:marvin@evilinsult.com?Subject=Evil%20Insult%20Generator%20Proposal&Body=Hej%20fuckers%2C%0A%0Aplease%20add%20this%20beauty%3A%0A%0Ainsult%3A%20...%0Alanguage%3A%20...%0Acomment%20%28optional%29%3A%20...%0A%0A...%0A"));
@@ -467,14 +462,6 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void formAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formAncestorResized
-
-    }//GEN-LAST:event_formAncestorResized
-
-    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments
@@ -504,29 +491,27 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Main().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGenerate;
-    private javax.swing.JComboBox cmbLanguage;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JTextPane txtPaneShow;
+    javax.swing.JButton btnGenerate;
+    javax.swing.JComboBox cmbLanguage;
+    javax.swing.JMenu jMenu1;
+    javax.swing.JMenu jMenu2;
+    javax.swing.JMenu jMenu3;
+    javax.swing.JMenu jMenu4;
+    javax.swing.JMenu jMenu5;
+    javax.swing.JMenuBar jMenuBar1;
+    javax.swing.JMenuItem jMenuItem1;
+    javax.swing.JMenuItem jMenuItem2;
+    javax.swing.JMenuItem jMenuItem3;
+    javax.swing.JMenuItem jMenuItem4;
+    javax.swing.JPanel jPanel1;
+    javax.swing.JScrollPane jScrollPane2;
+    javax.swing.JPopupMenu.Separator jSeparator1;
+    javax.swing.JTextPane txtPaneShow;
     // End of variables declaration//GEN-END:variables
 }
