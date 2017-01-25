@@ -331,6 +331,7 @@ public final class Main extends JFrame {
 
     private void btnGenerateActionPerformed(ActionEvent evt) {                                            
         try {
+             evt.getID();
             Languages l;
             l = (Languages) cmbLanguage.getSelectedItem();
             language = l.getLang();
@@ -345,7 +346,7 @@ public final class Main extends JFrame {
     }                                           
 
     private void formWindowStateChanged(WindowEvent evt) {                                        
-
+         evt.getID();
         int x = this.getWidth() / 2;
         int y = this.getHeight();
         cmbLanguage.setLocation(x - cmbLanguage.getPreferredSize().width / 2, y - 110);
@@ -385,28 +386,32 @@ public final class Main extends JFrame {
         }
     }                                   
 
-    private void jMenuItem2ActionPerformed(ActionEvent evt) {                                           
+    private void jMenuItem2ActionPerformed(ActionEvent evt) {     
+         evt.getID();
         String URL = "https://www.facebook.com/EvilInsultGenerator/";
         webPages(URL);
     }                                          
 
     private void jMenuItem3ActionPerformed(ActionEvent evt) {                                           
+         evt.getID();
         String URL = "https://twitter.com/__E__I__G__";
         webPages(URL);
     }                                          
 
     private void jMenuItem4ActionPerformed(ActionEvent evt) {                                           
+         evt.getID();
         String URL = "https://evilinsult.com/newsletter/";
         webPages(URL);
     }                                          
 
     private void jMenu4MouseClicked(MouseEvent evt) {                                    
+         evt.getID();
         String URL = "https://evilinsult.com/";
         webPages(URL);
     }                                   
 
     private void jMenu5MouseClicked(MouseEvent evt) {                                    
-
+         evt.getID();
         String URL = "https://evilinsult.com/legal.html";
         webPages(URL);
     }                                   
